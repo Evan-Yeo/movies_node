@@ -23,12 +23,12 @@ router.post("/new", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Person.findById(req.params.id)
-    .populate("restaurants")
+    .populate("movies")
     // .populate({
     //   //deep population
-    //   path: "restaurants",
+    //   path: "movies",
     //   //   populate: {
-    //   //     path: "cuisines",
+    //   //     path: "genres",
     //   //   },
     // })
     .then((person) => {

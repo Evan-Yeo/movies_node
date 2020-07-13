@@ -1,21 +1,23 @@
 <form action="/new" method="post">
-  <input name="name" placeholder="movie name" />
+	<input name="name" placeholder="Movie name" />
 
-  <input name="country" placeholder="Singapore" />
+	<input name="country" placeholder="Country" />
 
-  <!-- <select name="cuisine[]">
+	<!-- <select name="genre[]">
     <option value="">Select One</option>
   </select> -->
-  <% cuisines.forEach(cuisine => { %>
-  <input type="checkbox" value="<%= cuisine._id %>" name="cuisine" id="" /> <%=
-  cuisine.name %> <% }) %>
+	<% genres.forEach(genre => { %>
+	<input type="checkbox" value="<%= genre._id %>" name="genre" id="" /> <%=
+	genre.name %> <% }) %>
 
-  <select name="directedBy">
-    <option value="">Select One</option>
-    <% people.forEach(person => { %>
-    <option value="<%= person._id %>"><%= person.firstname %> <%= person.lastname %></option>
-    <% }) %>
-  </select>
+	<select name="directedBy">
+		<option value="">Director</option>
+		<% people.forEach(person => { %>
+		<option value="<%= person._id %>"
+			><%= person.firstname %> <%= person.lastname %></option
+		>
+		<% }) %>
+	</select>
 
-  <button type="submit">Insert Movie</button>
+	<button type="submit">Insert Movie</button>
 </form>

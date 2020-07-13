@@ -1,16 +1,16 @@
 const router = require("express").Router();
 const Movie = require("../models/movie.model");
 const Person = require("../models/person.model");
-const Cuisine = require("../models/cuisine.model");
+const Genre = require("../models/genre.model");
 
 router.get("/", (req, res) => {
 
   Movie.find()
 
     .populate("directedBy")
-    .populate("cuisine")
+    .populate("genre")
     .then((movies) => {
-      //   res.send(restaurants);
+      //   res.send(movies);
       res.render("movies/index", {
         movies
       });
@@ -25,11 +25,11 @@ router.post("/new", (req, res) => {
   let movie = new Movie(req.body);
   console.log(movie);
 
-  //save restaurant first
+  //save movie first
   movie
     .save()
     .then(() => {
-      //restaurant : { _id: , ownedBy: , name : ,}
+      //movie : { _id: , ownedBy: , name : ,}
       //if saved then save person
       Person.findById(movie.directedBy).then((person) => {
         //push into movies array in person model
@@ -49,11 +49,11 @@ router.post("/new", (req, res) => {
 router.get("/new", async (req, res) => {
   try {
     let people = await Person.find();
-    let cuisines = await Cuisine.find();
+    let genres = await Genre.find();
 
     res.render("movies/new", {
       people,
-      cuisines
+      genres
     });
   } catch (error) {
     console.log(error);
@@ -63,11 +63,11 @@ router.get("/new", async (req, res) => {
   //     .then((people) => {
   //       //person = {} people = []
   //       //   console.log(people);
-  //       //to find all cuisines
-  //       // Cuisine.find() //[]
-  //       //   .then((cuisines) => {
+  //       //to find all genres
+  //       // Genre.find() //[]
+  //       //   .then((genres) => {
   //       //       console.log(people);
-  //       res.render("restaurants/new", { people, cuisines });
+  //       res.render("movies/new", { people, genres });
   //       //   })
   //       //   .catch((err) => {
   //       //     console.log(err);
@@ -86,9 +86,9 @@ router.get("/show/:id", (req, res) => {
       res.send(movie);
     });
 
-  //   Restaurant.findById(req.params.id).then((restaurant) => {
-  //     Person.findById(restaurant.ownedBy).then((person) => {
-  //       res.send(restaurant, person);
+  //   Movie.findById(req.params.id).then((movie) => {
+  //     Person.findById(movie.ownedBy).then((person) => {
+  //       res.send(movie, person);
   //     });
   //   });
 });

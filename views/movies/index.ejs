@@ -6,10 +6,10 @@
         <div class="card-body">
           <h5 class="card-title"><%= movie.name %></h5>
           <div>
-            <!-- loop through array of cuisine -->
-            <% movie.cuisine.forEach(cuisine => {%>
+            <!-- loop through array of genre -->
+            <% movie.genre.forEach(genre => {%>
             <span class="badge badge-secondary">
-              <%= cuisine.name %>
+              <%= genre.name %>
             </span>
             <% }) %>
           </div>

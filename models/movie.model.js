@@ -10,13 +10,13 @@ const movieSchema = Schema({
     type: String,
     required: true,
   },
-  cuisine: [{
+  genre: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Cuisine",
+    ref: "Genre",
   }, ],
   directedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Person",
+    ref: "User",
   },
 });
 
