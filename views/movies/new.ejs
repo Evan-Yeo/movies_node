@@ -1,0 +1,21 @@
+<form action="/new" method="post">
+  <input name="name" placeholder="movie name" />
+
+  <input name="country" placeholder="Singapore" />
+
+  <!-- <select name="cuisine[]">
+    <option value="">Select One</option>
+  </select> -->
+  <% cuisines.forEach(cuisine => { %>
+  <input type="checkbox" value="<%= cuisine._id %>" name="cuisine" id="" /> <%=
+  cuisine.name %> <% }) %>
+
+  <select name="directedBy">
+    <option value="">Select One</option>
+    <% users.forEach(user => { %>
+    <option value="<%= user._id %>"><%= user.firstname %> <%= user.lastname %></option>
+    <% }) %>
+  </select>
+
+  <button type="submit">Insert Movie</button>
+</form>
