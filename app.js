@@ -26,7 +26,7 @@ app.set("view engine", "ejs"); //view engine setup
 app.use(expressLayouts);
 
 app.use("/", require("./routes/movie.route"));
-app.use("/user", require("./routes/user.route"));
+app.use("/person", require("./routes/person.route"));
 app.use("/cuisine", require("./routes/cuisine.route"));
 
 app.listen(process.env.PORT, () => {

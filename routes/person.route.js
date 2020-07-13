@@ -1,17 +1,17 @@
 const router = require("express").Router();
-const User = require("../models/user.model");
+const Person = require("../models/person.model");
 
 router.get("/new", (req, res) => {
-  res.render("users/new");
+  res.render("people/new");
 });
 
 router.post("/new", (req, res) => {
   //   console.log(req.body);
   //   res.send("sent");
 
-  let user = new User(req.body);
+  let person = new Person(req.body);
 
-  user
+  person
     .save()
     .then(() => {
       res.redirect("/");
@@ -22,7 +22,7 @@ router.post("/new", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  User.findById(req.params.id)
+  Person.findById(req.params.id)
     .populate("restaurants")
     // .populate({
     //   //deep population
@@ -31,8 +31,8 @@ router.get("/:id", (req, res) => {
     //   //     path: "cuisines",
     //   //   },
     // })
-    .then((user) => {
-      res.send(user);
+    .then((person) => {
+      res.send(person);
     });
 });
 

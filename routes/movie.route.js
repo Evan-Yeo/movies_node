@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Movie = require("../models/movie.model");
-const User = require("../models/user.model");
+const Person = require("../models/person.model");
 const Cuisine = require("../models/cuisine.model");
 
 router.get("/", (req, res) => {
@@ -30,12 +30,12 @@ router.post("/new", (req, res) => {
     .save()
     .then(() => {
       //restaurant : { _id: , ownedBy: , name : ,}
-      //if saved then save user
-      User.findById(movie.directedBy).then((user) => {
-        //push into movies array in user model
-        user.movies.push(movie._id);
+      //if saved then save person
+      Person.findById(movie.directedBy).then((person) => {
+        //push into movies array in person model
+        person.movies.push(movie._id);
 
-        user.save().then(() => {
+        person.save().then(() => {
           //if sucess redirect to home page
           res.redirect("/");
         });
@@ -48,26 +48,26 @@ router.post("/new", (req, res) => {
 // asynchronous function
 router.get("/new", async (req, res) => {
   try {
-    let users = await User.find();
+    let people = await Person.find();
     let cuisines = await Cuisine.find();
 
     res.render("movies/new", {
-      users,
+      people,
       cuisines
     });
   } catch (error) {
     console.log(error);
   }
 
-  //   User.find() //[]
-  //     .then((users) => {
-  //       //user = {} users = []
-  //       //   console.log(users);
+  //   Person.find() //[]
+  //     .then((people) => {
+  //       //person = {} people = []
+  //       //   console.log(people);
   //       //to find all cuisines
   //       // Cuisine.find() //[]
   //       //   .then((cuisines) => {
-  //       //       console.log(users);
-  //       res.render("restaurants/new", { users, cuisines });
+  //       //       console.log(people);
+  //       res.render("restaurants/new", { people, cuisines });
   //       //   })
   //       //   .catch((err) => {
   //       //     console.log(err);
@@ -87,8 +87,8 @@ router.get("/show/:id", (req, res) => {
     });
 
   //   Restaurant.findById(req.params.id).then((restaurant) => {
-  //     User.findById(restaurant.ownedBy).then((user) => {
-  //       res.send(restaurant, user);
+  //     Person.findById(restaurant.ownedBy).then((person) => {
+  //       res.send(restaurant, person);
   //     });
   //   });
 });

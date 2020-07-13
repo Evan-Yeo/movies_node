@@ -16,7 +16,7 @@ const movieSchema = Schema({
   }, ],
   directedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Person",
   },
 });
 

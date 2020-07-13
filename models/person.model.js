@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = Schema({
+const personSchema = Schema({
   firstname: {
     type: String,
     required: true,
@@ -18,13 +18,11 @@ const userSchema = Schema({
     type: String,
     enum: ["male", "female"],
   },
-  restaurants: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Restaurant",
-    },
-  ],
+  movies: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Movie",
+  }, ],
 });
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const Person = mongoose.model("Person", personSchema);
+module.exports = Person;
