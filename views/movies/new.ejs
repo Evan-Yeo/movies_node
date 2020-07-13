@@ -6,9 +6,13 @@
 	<!-- <select name="genre[]">
     <option value="">Select One</option>
   </select> -->
-	<% genres.forEach(genre => { %>
-	<input type="checkbox" value="<%= genre._id %>" name="genre" id="" /> <%=
-	genre.name %> <% }) %>
+
+	<select name="genre">
+		<option value="">Genres</option>
+		<% genres.forEach(genre => { %>
+		<option value="<%= genre._id %>"><%= genre.name %></option>
+		<% }) %>
+	</select>
 
 	<select name="directedBy">
 		<option value="">Director</option>
