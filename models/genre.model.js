@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const cuisineSchema = Schema({
+const genreSchema = Schema({
   name: String,
 }, {
   timestamps: true,
@@ -10,5 +10,5 @@ const cuisineSchema = Schema({
 createdAt:
 updatedAt:
 */
-const Genre = mongoose.model("Genre", cuisineSchema);
+const Genre = mongoose.model("Genre", genreSchema);
 module.exports = Genre;

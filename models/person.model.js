@@ -10,14 +10,15 @@ const personSchema = Schema({
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    unique: true,
-  },
   gender: {
     type: String,
     enum: ["male", "female"],
   },
+  designation: {
+    type: String,
+    enum: ["director", "actor"],
+  },
+
   movies: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Movie",
